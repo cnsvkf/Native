@@ -1,18 +1,12 @@
 package com.example.nativeui
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.nativeui.ui.theme.NativeUiTheme
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -24,12 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +33,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+val Sfpro = FontFamily(
+    Font(R.font.sfbold, FontWeight.Bold),
+            Font(R.font.sfbold, FontWeight.SemiBold)
+)
 @Composable
-fun bookOn() {
+fun bookOn(){
     Surface(
         modifier = Modifier
             .fillMaxSize(),
@@ -57,12 +52,8 @@ fun bookOn() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(
-                        top = 16.dp,
-                        start = 8.dp,
-                        bottom = 16.dp,
-                        end = 8.dp
-                    ),
+                    .statusBarsPadding()
+                    .padding(top = 6.dp),
                 horizontalArrangement = Arrangement.Start
             ){
                 Image(
@@ -75,7 +66,11 @@ fun bookOn() {
 
                 Spacer(modifier = Modifier.width(9.dp))
 
-                Text("Book-on")
+                Text("Book-on",
+                    fontFamily = Sfpro,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 17.sp
+                )
             }
             Column(
                 modifier = Modifier
@@ -83,35 +78,40 @@ fun bookOn() {
                 ,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.weight(0.3f))
+                Spacer(modifier = Modifier.height(275.dp))
 
                 Text("학교 도서관을 더 쉽게 사용하는 방법",
-                    fontSize = 17.sp
+                    fontFamily = Sfpro,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 17.sp,
                 )
-                Spacer(modifier = Modifier.weight(0.1f))
+                Spacer(modifier = Modifier.height(41.dp))
 
                 Text("책 검색, 대출현황, 좌석예약까지 \n" + "한 번에 관리하세요",
                     fontSize = 17.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth()
+                    fontFamily = Sfpro,
+                    fontWeight = FontWeight(590),
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.weight(0.13f))
+                Spacer(modifier = Modifier.height(64.dp))
 
                 Box(
                     modifier = Modifier
                         .border(2.dp, Color.Black, RoundedCornerShape(16.dp))
-                        .fillMaxWidth(0.43f)
-                        .aspectRatio(162f / 32f),
+                        .width(162.dp)
+                        .height(32.dp),
                     contentAlignment = Alignment.Center
-
                 ) {
                     Text(
                         text = "시작하기",
-                        fontSize = 17.sp
+                        fontFamily = Sfpro,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 17.sp,
+                        textAlign = TextAlign.Center
                     )
                 }
 
-                Spacer(modifier = Modifier.weight(0.47f))
             }
         }
     }
