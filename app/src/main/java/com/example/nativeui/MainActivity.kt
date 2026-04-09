@@ -41,14 +41,11 @@ val Sfpro = FontFamily(
 fun bookOn(){
     Surface(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .padding(25.dp),
             color = MaterialTheme.colorScheme.background
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -111,9 +108,7 @@ fun bookOn(){
                         textAlign = TextAlign.Center
                     )
                 }
-
             }
-        }
     }
 
 }
